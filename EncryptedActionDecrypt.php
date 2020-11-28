@@ -9,8 +9,11 @@ use TempFSFile;
 
 class EncryptedActionDecrypt extends Action {
 
-	private static $CHUNK_SIZE = 1024 * 1024;
+	private const CHUNK_SIZE = 1024 * 1024;
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getName() {
 		return 'decrypt';
 	}
@@ -132,7 +135,7 @@ class EncryptedActionDecrypt extends Action {
 		}
 
 		while ( !feof( $handle ) ) {
-			$buffer = fread( $handle, self::$CHUNK_SIZE );
+			$buffer = fread( $handle, self::CHUNK_SIZE );
 			echo $buffer;
 			ob_flush();
 			flush();
@@ -145,7 +148,8 @@ class EncryptedActionDecrypt extends Action {
 		$status = fclose( $handle );
 
 		if ( $retbytes && $status ) {
-			return $cnt; // return num. bytes delivered like readfile() does.
+			// return num. bytes delivered like readfile() does.
+			return $cnt;
 		}
 
 		return $status;

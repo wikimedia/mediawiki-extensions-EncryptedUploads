@@ -63,7 +63,7 @@ class EncryptedUploadsHooks {
 	}
 
 	/**
-	 * @param UploadFromFile $file
+	 * @param UploadFromFile &$file
 	 *
 	 * @return void
 	 */
@@ -181,7 +181,6 @@ class EncryptedUploadsHooks {
 							  $out->getUser()->isAllowed( 'read-encrypted-files' ) ||
 							  self::customRightsCheck( $out->getUser(), $title );
 
-				//$outputDone = true;
 				$out->addModules( 'ext.encrypteduploads.main' );
 				$templater = new \TemplateParser( __DIR__ . '/templates', true );
 
@@ -208,18 +207,17 @@ class EncryptedUploadsHooks {
 	 * @return bool
 	 */
 	public static function customRightsCheck( $viewer, $title ) {
-
 		global $wgEncryptedUploadsSMWBasedRestrictionsEnabled,
 			   $wgEncryptedUploadsSMWFilePropertyName,
 			   $wgEncryptedUploadsSMWTargetPropertiesNames,
 			   $wgEncryptedUploadsSMWFilePropertyNameDeep;
 
-		if( !$wgEncryptedUploadsSMWBasedRestrictionsEnabled ) {
+		if ( !$wgEncryptedUploadsSMWBasedRestrictionsEnabled ) {
 			// Always bow out if the setting is not enabled.
 			return false;
 		}
 
-		if( class_exists('\SQI\SemanticQueryInterface') ) {
+		if ( class_exists( '\SQI\SemanticQueryInterface' ) ) {
 
 			$userPageText = $viewer->getUserPage()->getBaseTitle()->getBaseText();
 
@@ -237,11 +235,11 @@ class EncryptedUploadsHooks {
 			/** @var Title $targetTitle */
 			$targetTitle = $props['properties'][ $wgEncryptedUploadsSMWFilePropertyName ][0];
 
-			if( $wgEncryptedUploadsSMWFilePropertyNameDeep ) {
+			if ( $wgEncryptedUploadsSMWFilePropertyNameDeep ) {
 				$sqi->reset();
 				$result = $sqi->from( $targetTitle )->printout( $wgEncryptedUploadsSMWFilePropertyNameDeep )->toArray();
 				$result = array_shift( $result );
-				if( !array_key_exists( $wgEncryptedUploadsSMWFilePropertyNameDeep, $result['properties'] ) ) {
+				if ( !array_key_exists( $wgEncryptedUploadsSMWFilePropertyNameDeep, $result['properties'] ) ) {
 					return false;
 				}
 				$targetTitle = $result['properties'][$wgEncryptedUploadsSMWFilePropertyNameDeep][0];
@@ -255,7 +253,7 @@ class EncryptedUploadsHooks {
 			}
 			$pageUsers = $sqi->toArray();
 
-			if( count($pageUsers) ) {
+			if ( count( $pageUsers ) ) {
 				$props = array_shift( $pageUsers );
 				foreach ( $wgEncryptedUploadsSMWTargetPropertiesNames as $p ) {
 					if ( array_key_exists( $p, $props['properties'] ) ) {
@@ -263,7 +261,7 @@ class EncryptedUploadsHooks {
 						$users = $props['properties'][$p];
 						/** @var Title $user */
 						foreach ( $users as $user ) {
-							$u = User::newFromName( str_replace("User:", "", $user->getBaseText() ) );
+							$u = User::newFromName( str_replace( "User:", "", $user->getBaseText() ) );
 							if ( $u && $u->getId() && $u->getId() === $viewer->getId() ) {
 								return true;
 							}
@@ -327,7 +325,7 @@ class EncryptedUploadsHooks {
 		if ( $password ) {
 			$result = $module->getResult();
 			$data = $result->getResultData();
-			$status = $result->addValue( array( 'encryption' ), 'secret', $password );
+			$status = $result->addValue( [ 'encryption' ], 'secret', $password );
 		}
 	}
 

@@ -58,7 +58,7 @@ class EncryptedUploads {
 
 	/**
 	 * @param string $file
-	 * @param        $output
+	 * @param string $output
 	 * @param string $password
 	 *
 	 * @return bool
