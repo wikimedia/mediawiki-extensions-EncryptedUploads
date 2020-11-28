@@ -1,0 +1,14 @@
+{
+	"root": true,
+	"extends": [
+		"wikimedia/client",
+		"wikimedia/jquery",
+		"wikimedia/mediawiki"
+	],
+	"rules": {
+		"jsdoc/no-undefined-types": "off",
+		"max-len": "off",
+		"no-jquery/no-parse-html-literal": "off",
+		"no-undef": "off"
+	}
+}

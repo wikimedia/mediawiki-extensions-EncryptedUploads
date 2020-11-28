@@ -14,5 +14,7 @@
 	"encrypteduploads-mail-subject":  "Encrypted file upload was created",
 	"encrypteduploads-mail-text":  "You've just created $1 as an encrypted file upload on the wiki, please store the file secret:\n\n$2\n\n",
 	"mwe-upwiz-encrypt": "\uD83D\uDD12 Encrypt upload with a password",
-	"mwe-upwiz-thanks-secret": "\uD83D\uDD12 Secret decryption password:"
+	"mwe-upwiz-thanks-secret": "\uD83D\uDD12 Secret decryption password:",
+	"action-read-encrypted-files": "read encrypted files",
+	"right-read-encrypted-files": "Read encrypted files"
 }

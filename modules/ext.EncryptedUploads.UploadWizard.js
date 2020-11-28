@@ -6,8 +6,8 @@
 	 * Hooks into wiki text processing of UploadWizard to extract
 	 * information about file secret
 	 *
-	 * @param {object} details
-	 * @param {object} result
+	 * @param {Object} details
+	 * @param {Object} result
 	 */
 	mw.hook( 'uploadwizard.wikitext-submit-internal' ).add( function ( details, result ) {
 		if ( 'encrypted' in details.upload && 'encryption' in result ) {
@@ -36,7 +36,7 @@
 	 * request for the file by the user
 	 *
 	 * @param {mw.UploadWizardDetails} uploadWizardDetails
-	 * @param {object} params
+	 * @param {Object} params
 	 */
 	mw.hook( 'uploadwizard.wikitext-submit' ).add( function ( uploadWizardDetails, params ) {
 		if ( uploadWizardDetails.encryptionField.isSelected() ) {
@@ -50,7 +50,7 @@
 	 * with extra password line if file encryption was requested
 	 *
 	 * @param {uw.ui.Thanks} thanks
-	 * @param {object} inputs
+	 * @param {Object} inputs
 	 */
 	mw.hook( 'uploadwizard.thanks-addupload' ).add( function ( thanks, upload, $thanksDiv ) {
 		if ( 'encrypted' in upload && 'password' in upload ) {
