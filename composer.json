@@ -1,15 +1,32 @@
 {
-    "name": "wikiworks/encrypted-uploads",
-    "description": "Allows to encrypt uploaded files providing an ability to share secret with selected group of users",
-    "type": "mediawiki-extension",
-    "require": {
-        "defuse/php-encryption": "^2.2"
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Alexey",
-            "email": "hire@mediawiki.pro"
-        }
-    ]
+	"name": "wikiworks/encrypted-uploads",
+	"description": "Allows to encrypt uploaded files providing an ability to share secret with selected group of users",
+	"type": "mediawiki-extension",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Alexey",
+			"email": "hire@mediawiki.pro"
+		}
+	],
+	"require": {
+		"defuse/php-encryption": "^2.2"
+	},
+	"require-dev": {
+		"mediawiki/mediawiki-codesniffer": "33.0.0",
+		"mediawiki/minus-x": "1.1.0",
+		"php-parallel-lint/php-console-highlighter": "0.5.0",
+		"php-parallel-lint/php-parallel-lint": "1.2.0"
+	},
+	"scripts": {
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check .",
+			"phpcs -p -s"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		]
+	}
 }
