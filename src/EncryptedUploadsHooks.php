@@ -279,7 +279,7 @@ class EncryptedUploadsHooks {
 	 * @param \DatabaseUpdater $updater
 	 */
 	public static function onLoadExtensionSchemaUpdates( $updater ) {
-		$updater->addExtensionTable( 'encrypted_file', __DIR__ . '/schema/encrypted_file.sql' );
+		$updater->addExtensionTable( 'encrypted_file', __DIR__ . '/../schema/encrypted_file.sql' );
 	}
 
 	/**

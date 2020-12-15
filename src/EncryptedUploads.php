@@ -43,7 +43,6 @@ class EncryptedUploads {
 	 */
 	public function __construct() {
 		$this->dbw = wfGetDB( DB_MASTER );
-		// TODO: replace with DB_REPLICA
 		$this->dbr = wfGetDB( DB_REPLICA );
 	}
 

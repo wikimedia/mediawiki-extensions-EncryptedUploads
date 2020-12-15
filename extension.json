@@ -8,16 +8,14 @@
 	"descriptionmsg": "encrypteduploads-desc",
 	"license-name": "MIT",
 	"type": "other",
-	"AutoloadClasses": {
-		"EncryptedUploads\\EncryptedUploads": "EncryptedUploads.php",
-		"EncryptedUploads\\EncryptedUploadsHooks": "EncryptedUploadsHooks.php",
-		"EncryptedUploads\\EncryptedActionDecrypt": "EncryptedActionDecrypt.php"
+	"AutoloadNamespaces": {
+		"EncryptedUploads\\": "src/"
 	},
 	"config": {
 		"EncryptedUploadsSendMail": false,
 		"EncryptedUploadsSMWBasedRestrictionsEnabled": false,
 		"EncryptedUploadsSMWFilePropertyName": "",
-		"$wgEncryptedUploadsSMWFilePropertyNameDeep": false,
+		"EncryptedUploadsSMWFilePropertyNameDeep": false,
 		"EncryptedUploadsSMWTargetPropertiesNames": []
 	},
 	"Hooks": {

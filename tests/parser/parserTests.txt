@@ -1,0 +1,12 @@
+!! Version 2
+!! functionhooks
+isencrypted
+!! endfunctionhooks
+
+!! test
+Simple
+!! wikitext
+{{#isencrypted:Test}}
+!! html
+
+!! end
