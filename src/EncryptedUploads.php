@@ -39,9 +39,16 @@ class EncryptedUploads {
 	}
 
 	/**
+	 * Destroys the instance stored
+	 */
+	public static function clear() {
+		self::$instance = null;
+	}
+
+	/**
 	 * EncryptedUploads constructor.
 	 */
-	public function __construct() {
+	private function __construct() {
 		$this->dbw = wfGetDB( DB_MASTER );
 		$this->dbr = wfGetDB( DB_REPLICA );
 	}

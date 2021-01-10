@@ -87,4 +87,9 @@ class EncryptedUploadsTest extends MediaWikiTestCase {
 		$this->encryptedUploads = EncryptedUploads::getInstance();
 	}
 
+	protected function tearDown(): void {
+		parent::tearDown();
+		EncryptedUploads::clear();
+	}
+
 }

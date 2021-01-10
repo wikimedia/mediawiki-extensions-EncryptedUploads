@@ -8,6 +8,9 @@
 	"descriptionmsg": "encrypteduploads-desc",
 	"license-name": "MIT",
 	"type": "other",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
 	"AutoloadNamespaces": {
 		"EncryptedUploads\\": "src/"
 	},
