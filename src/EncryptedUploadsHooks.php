@@ -27,6 +27,10 @@ use UserMailer;
  */
 class EncryptedUploadsHooks {
 
+	/**
+	 * @param string $checked
+	 * @return string
+	 */
 	private static function getInputHtml( $checked = false ) {
 		return Html::openElement( 'tr' ) . Html::openElement( 'td', [ 'align' => 'right' ] ) .
 			   Html::label( wfMessage( 'encrypteduploads-input-label' )->text(), 'encrypt' ) .

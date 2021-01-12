@@ -109,7 +109,7 @@ class EncryptedActionDecrypt extends Action {
 		ob_end_flush();
 
 		// Drop file contents to the browser
-		$status = $this->readfile_chunked( $tmpFile->getPath() );
+		$status = $this->readfileChunked( $tmpFile->getPath() );
 
 		wfDebugLog( 'EncryptedUploads', 'Done, bytes sent: ' . $status );
 
@@ -125,7 +125,7 @@ class EncryptedActionDecrypt extends Action {
 	 *
 	 * @return bool|int
 	 */
-	private function readfile_chunked( $filename, $retbytes = true ) {
+	private function readfileChunked( $filename, $retbytes = true ) {
 		$buffer = '';
 		$cnt = 0;
 		$handle = fopen( $filename, 'rb' );
