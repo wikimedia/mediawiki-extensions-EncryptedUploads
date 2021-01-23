@@ -59,7 +59,7 @@
 		]
 	},
 	"ExtensionMessagesFiles": {
-		"EncryptedUploads\\EncryptedUploadsMagic": "EncryptedUploadsMagic.i18n.php"
+		"EncryptedUploadsMagic": "EncryptedUploads.i18n.magic.php"
 	},
 	"ResourceModules": {
 		"ext.encrypteduploads.main": {
