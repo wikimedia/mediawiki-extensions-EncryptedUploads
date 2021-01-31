@@ -43,7 +43,7 @@
 		"ImageOpenShowImageInlineBefore": [
 			"EncryptedUploads\\EncryptedUploadsHooks::onImageOpenShowImageInlineBefore"
 		],
-		"APIAfterExecute":  [
+		"APIAfterExecute": [
 			"EncryptedUploads\\EncryptedUploadsHooks::onAPIAfterExecute"
 		],
 		"BeforePageDisplay": [
