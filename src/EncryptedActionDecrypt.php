@@ -4,6 +4,7 @@ namespace EncryptedUploads;
 
 use Action;
 use LocalFile;
+use MediaWiki\MediaWikiServices;
 use RepoGroup;
 use TempFSFile;
 
@@ -53,7 +54,15 @@ class EncryptedActionDecrypt extends Action {
 
 		wfDebugLog( 'EncryptedUploads', 'File is encrypted, proceeding..' );
 
-		$file = LocalFile::newFromTitle( $title, RepoGroup::singleton()->getLocalRepo() );
+		$services = MediaWikiServices::getInstance();
+		if ( method_exists( $services, 'getRepoGroup' ) ) {
+			// MW 1.34+
+			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+		} else {
+			$repoGroup = RepoGroup::singleton();
+		}
+
+		$file = LocalFile::newFromTitle( $title, $repoGroup->getLocalRepo() );
 		if ( !$file ) {
 			$this->getOutput()->addHTML( 'Can not fetch file' );
 			return false;
