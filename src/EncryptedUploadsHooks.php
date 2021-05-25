@@ -28,7 +28,7 @@ use UserMailer;
 class EncryptedUploadsHooks {
 
 	/**
-	 * @param string $checked
+	 * @param bool $checked
 	 * @return string
 	 */
 	private static function getInputHtml( $checked = false ) {
@@ -89,6 +89,7 @@ class EncryptedUploadsHooks {
 
 			wfDebugLog( 'EncryptedUploads', 'Generated password: ' . $generatedPassword );
 
+			// @phan-suppress-next-line PhanUndeclaredProperty
 			$file->getLocalFile()->encryption_password = $generatedPassword;
 			$sessionKey = 'encryption_file_' . md5( $file->getTitle()->getDBkey() );
 

@@ -19,7 +19,7 @@ use User;
  */
 class EncryptedUploads {
 
-	/** @var EncryptedUploads */
+	/** @var EncryptedUploads|null */
 	private static $instance;
 
 	/** @var \Wikimedia\Rdbms\Database */
