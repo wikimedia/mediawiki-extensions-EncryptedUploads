@@ -187,7 +187,7 @@ class EncryptedUploadsHooks {
 							  self::customRightsCheck( $out->getUser(), $title );
 
 				$out->addModules( 'ext.encrypteduploads.main' );
-				$templater = new \TemplateParser( __DIR__ . '/templates', true );
+				$templater = new \TemplateParser( __DIR__ . '/templates' );
 
 				$args = [];
 				$args['title'] = wfMessage( 'encrypteduploads-warning-title' )->text();

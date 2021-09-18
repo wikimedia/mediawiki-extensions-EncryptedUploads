@@ -59,6 +59,7 @@ class EncryptedActionDecrypt extends Action {
 			// MW 1.34+
 			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 		} else {
+			// @phan-suppress-next-line PhanUndeclaredStaticMethod
 			$repoGroup = RepoGroup::singleton();
 		}
 
