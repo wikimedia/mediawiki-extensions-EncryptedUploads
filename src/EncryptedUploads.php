@@ -10,6 +10,7 @@ use Parser;
 use stdClass;
 use Title;
 use User;
+use Wikimedia\Rdbms\Database;
 
 /**
  * Class for EncryptedUploads extension
@@ -22,10 +23,10 @@ class EncryptedUploads {
 	/** @var EncryptedUploads|null */
 	private static $instance;
 
-	/** @var \Wikimedia\Rdbms\Database */
+	/** @var Database */
 	private $dbr;
 
-	/** @var \Wikimedia\Rdbms\Database */
+	/** @var Database */
 	private $dbw;
 
 	/**
@@ -49,7 +50,7 @@ class EncryptedUploads {
 	 * EncryptedUploads constructor.
 	 */
 	private function __construct() {
-		$this->dbw = wfGetDB( DB_MASTER );
+		$this->dbw = wfGetDB( DB_PRIMARY );
 		$this->dbr = wfGetDB( DB_REPLICA );
 	}
 
