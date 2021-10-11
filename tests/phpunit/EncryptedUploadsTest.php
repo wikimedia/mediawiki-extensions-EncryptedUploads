@@ -2,7 +2,7 @@
 
 namespace EncryptedUploads;
 
-use MediaWikiTestCase;
+use MediaWikiIntegrationTestCase;
 
 /**
  * Class EncryptedUploadsTest
@@ -12,7 +12,7 @@ use MediaWikiTestCase;
  * @group FileRepo
  * @group FileBackend
  */
-class EncryptedUploadsTest extends MediaWikiTestCase {
+class EncryptedUploadsTest extends MediaWikiIntegrationTestCase {
 
 	/**
 	 * @var EncryptedUploads
