@@ -144,7 +144,7 @@ class EncryptedUploadsHooks {
 
 					wfDebugLog( 'EncryptedUploads', 'Encrypted successfully! Updating database records..' );
 
-					$user = User::newFromId( $file->getUser( 'id' ) );
+					$user = User::newFromId( $file->getUploader()->getId() );
 					$encryptor->setEncrypted( $user, $file->getTitle()
 														  ->getArticleID(), $generatedPassword );
 
@@ -187,7 +187,7 @@ class EncryptedUploadsHooks {
 							  self::customRightsCheck( $out->getUser(), $title );
 
 				$out->addModules( 'ext.encrypteduploads.main' );
-				$templater = new \TemplateParser( __DIR__ . '/templates' );
+				$templater = new \TemplateParser( __DIR__ . '/../templates' );
 
 				$args = [];
 				$args['title'] = wfMessage( 'encrypteduploads-warning-title' )->text();
