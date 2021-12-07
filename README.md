@@ -1,6 +1,6 @@
 # Requirements
 
-- Mediawiki 1.31+
+- Mediawiki 1.35+
 - Composer installed
 
 # Setup
