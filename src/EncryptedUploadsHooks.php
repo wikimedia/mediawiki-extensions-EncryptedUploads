@@ -144,7 +144,12 @@ class EncryptedUploadsHooks {
 
 					wfDebugLog( 'EncryptedUploads', 'Encrypted successfully! Updating database records..' );
 
-					$user = User::newFromId( $file->getUploader()->getId() );
+					if ( method_exists( $file, 'getUploader' ) ) {
+						$user = User::newFromId( $file->getUploader()->getId() );
+					} else {
+						/* @phan-suppress-next-line PhanUndeclaredMethod */
+						$user = User::newFromId( $file->getUser( 'object' )->getId() );
+					}
 					$encryptor->setEncrypted( $user, $file->getTitle()
 														  ->getArticleID(), $generatedPassword );
 
