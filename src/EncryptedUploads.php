@@ -71,6 +71,14 @@ class EncryptedUploads {
 	 * @return bool
 	 */
 	public function encryptFile( $file, $output, $password ) {
+		if ( $file === null || strlen( $file ) === 0 ) {
+			wfDebugLog( 'EncryptedUploads', 'bad input, $file is empty' );
+			return false;
+		}
+		if ( $output === null || strlen( $output ) === 0 ) {
+			wfDebugLog( 'EncryptedUploads', 'bad input, $output is empty' );
+			return false;
+		}
 		try {
 			File::encryptFileWithPassword( $file, $output, $password );
 		}
