@@ -154,6 +154,7 @@ class EncryptedUploadsHooks {
 														  ->getArticleID(), $generatedPassword );
 
 					if ( $wgEncryptedUploadsSendMail && $user->getEmail() ) {
+						// @phan-suppress-next-line SecurityCheck-XSS UserMailer::send defaults to text/plain
 						UserMailer::send(
 							new \MailAddress( $user->getEmail(), $user->getName() ),
 							new \MailAddress( $wgPasswordSender, $wgPasswordSenderName ),
