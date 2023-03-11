@@ -81,18 +81,15 @@ class EncryptedUploads {
 		}
 		try {
 			File::encryptFileWithPassword( $file, $output, $password );
-		}
-		catch ( EnvironmentIsBrokenException $exception ) {
+		} catch ( EnvironmentIsBrokenException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Encryption caused EnvironmentIsBrokenException ' .
 											$exception->getMessage() );
 			return false;
-		}
-		catch ( IOException $exception ) {
+		} catch ( IOException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Encryption caused IOException ' .
 											$exception->getMessage() );
 			return false;
-		}
-		catch ( WrongKeyOrModifiedCiphertextException $exception ) {
+		} catch ( WrongKeyOrModifiedCiphertextException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Encryption caused WrongKeyOrModifiedCiphertextException ' .
 											$exception->getMessage() );
 			return false;
@@ -110,18 +107,15 @@ class EncryptedUploads {
 	public function decryptFile( $file, $output, $password ) {
 		try {
 			File::decryptFileWithPassword( $file, $output, $password );
-		}
-		catch ( EnvironmentIsBrokenException $exception ) {
+		} catch ( EnvironmentIsBrokenException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Decryption caused EnvironmentIsBrokenException ' .
 											$exception->getMessage() );
 			return false;
-		}
-		catch ( IOException $exception ) {
+		} catch ( IOException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Decryption caused IOException ' .
 											$exception->getMessage() );
 			return false;
-		}
-		catch ( WrongKeyOrModifiedCiphertextException $exception ) {
+		} catch ( WrongKeyOrModifiedCiphertextException $exception ) {
 			wfDebugLog( 'EncryptedUploads', 'Encryption caused WrongKeyOrModifiedCiphertextException ' .
 											$exception->getMessage() );
 			return false;
