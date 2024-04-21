@@ -12,7 +12,7 @@
 	"encrypteduploads-input-label": "Encrypt upload",
 	"encrypteduploads-input-text": "( file will be encrypted and you will be provided with a secret password to decrypt it )",
 	"encrypteduploads-mail-subject": "Encrypted file upload was created",
-	"encrypteduploads-mail-text": "You've just created $1 as an encrypted file upload on the wiki, please store the file secret:\n\n$2\n\n",
+	"encrypteduploads-mail-text": "You've just created $1 as an encrypted file upload on the wiki, please store the file secret:\n\n$2",
 	"mwe-upwiz-encrypt": "\uD83D\uDD12 Encrypt upload with a password",
 	"mwe-upwiz-thanks-secret": "\uD83D\uDD12 Secret decryption password:",
 	"action-read-encrypted-files": "read encrypted files",
