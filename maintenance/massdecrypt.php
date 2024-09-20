@@ -36,7 +36,9 @@ class EncryptedUploadsMassDecrypt extends Maintenance {
 
 		$files = $this->getDB( DB_REPLICA )->select(
 			'encrypted_file',
-			'*'
+			'*',
+			'',
+			__METHOD__
 		);
 
 		while ( $file = $files->fetchRow() ) {
