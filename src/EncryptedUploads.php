@@ -6,6 +6,7 @@ use Defuse\Crypto\Exception\EnvironmentIsBrokenException;
 use Defuse\Crypto\Exception\IOException;
 use Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException;
 use Defuse\Crypto\File;
+use MediaWiki\MediaWikiServices;
 use Parser;
 use stdClass;
 use Title;
@@ -50,8 +51,9 @@ class EncryptedUploads {
 	 * EncryptedUploads constructor.
 	 */
 	private function __construct() {
-		$this->dbw = wfGetDB( DB_PRIMARY );
-		$this->dbr = wfGetDB( DB_REPLICA );
+		$lb = MediaWikiServices::getInstance()->getDBLoadBalancer();
+		$this->dbw = $lb->getConnection( DB_PRIMARY );
+		$this->dbr = $lb->getConnection( DB_REPLICA );
 	}
 
 	/**
