@@ -36,7 +36,7 @@ class EncryptedUploadsHooks {
 			   Html::label( wfMessage( 'encrypteduploads-input-label' )->text(), 'encrypt' ) .
 			   Html::closeElement( 'td' ) . Html::openElement( 'td' ) .
 			   Html::check( 'encrypt', $checked ) .
-			   Html::rawElement( 'span', [], wfMessage( 'encrypteduploads-input-text' )->text() ) .
+			   Html::element( 'span', [], wfMessage( 'encrypteduploads-input-text' )->text() ) .
 			   Html::closeElement( 'td' ) . Html::closeElement( 'tr' );
 	}
 
@@ -196,9 +196,9 @@ class EncryptedUploadsHooks {
 
 				$args = [];
 				$args['title'] = wfMessage( 'encrypteduploads-warning-title' )->text();
-				$args['text'] = $showSecret ?
-					wfMessage( 'encrypteduploads-warning-secret-text', $data->password )->text() :
-					wfMessage( 'encrypteduploads-warning-text' )->text();
+				$args['html-text'] = $showSecret ?
+					wfMessage( 'encrypteduploads-warning-secret-text', $data->password )->parse() :
+					wfMessage( 'encrypteduploads-warning-text' )->parse();
 				$args['placeholder'] = wfMessage( 'encrypteduploads-warning-placeholder' )->text();
 				$args['submit'] = wfMessage( 'encrypteduploads-warning-submit' )->text();
 
