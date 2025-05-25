@@ -9,7 +9,7 @@
 	 * @param {Object} details
 	 * @param {Object} result
 	 */
-	mw.hook( 'uploadwizard.wikitext-submit-internal' ).add( function ( details, result ) {
+	mw.hook( 'uploadwizard.wikitext-submit-internal' ).add( ( details, result ) => {
 		if ( 'encrypted' in details.upload && 'encryption' in result ) {
 			details.upload.password = result.encryption.secret;
 		}
@@ -21,7 +21,7 @@
 	 *
 	 * @param {mw.UploadWizardDetails} uploadWizardDetails
 	 */
-	mw.hook( 'uploadwizard.buildinterface-details' ).add( function ( uploadWizardDetails ) {
+	mw.hook( 'uploadwizard.buildinterface-details' ).add( ( uploadWizardDetails ) => {
 		uploadWizardDetails.encryptionField = new OO.ui.CheckboxInputWidget( {} );
 		uploadWizardDetails.encryptionFieldLayout = new uw.FieldLayout( uploadWizardDetails.encryptionField, {
 			label: mw.message( 'mwe-upwiz-encrypt' ).text(),
@@ -38,7 +38,7 @@
 	 * @param {mw.UploadWizardDetails} uploadWizardDetails
 	 * @param {Object} params
 	 */
-	mw.hook( 'uploadwizard.wikitext-submit' ).add( function ( uploadWizardDetails, params ) {
+	mw.hook( 'uploadwizard.wikitext-submit' ).add( ( uploadWizardDetails, params ) => {
 		if ( uploadWizardDetails.encryptionField.isSelected() ) {
 			params.encrypt = true;
 			uploadWizardDetails.upload.encrypted = true;
@@ -52,7 +52,7 @@
 	 * @param {uw.ui.Thanks} thanks
 	 * @param {Object} inputs
 	 */
-	mw.hook( 'uploadwizard.thanks-addupload' ).add( function ( thanks, upload, $thanksDiv ) {
+	mw.hook( 'uploadwizard.thanks-addupload' ).add( ( thanks, upload, $thanksDiv ) => {
 		if ( 'encrypted' in upload && 'password' in upload ) {
 			$thanksDiv.find( '.mwe-upwiz-data' ).append(
 				$( '<p>' )
