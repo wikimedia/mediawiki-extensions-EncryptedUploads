@@ -6,7 +6,7 @@ use MediaWikiIntegrationTestCase;
 
 /**
  * Class EncryptedUploadsTest
- * @coversdefaultclass EncryptedUploads
+ * @coversDefaultClass EncryptedUploads
  * @package EncryptedUploads
  * @group Database
  * @group FileRepo
