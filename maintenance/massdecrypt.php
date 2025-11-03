@@ -11,6 +11,7 @@ require_once "$IP/maintenance/Maintenance.php";
 
 use EncryptedUploads\EncryptedUploads;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 
 // phpcs:disable MediaWiki.Files.ClassMatchesFilename.NotMatch
 class EncryptedUploadsMassDecrypt extends Maintenance {

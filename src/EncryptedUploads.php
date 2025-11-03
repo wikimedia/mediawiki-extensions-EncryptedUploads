@@ -7,9 +7,9 @@ use Defuse\Crypto\Exception\IOException;
 use Defuse\Crypto\Exception\WrongKeyOrModifiedCiphertextException;
 use Defuse\Crypto\File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Title\Title;
 use Parser;
 use stdClass;
-use Title;
 use User;
 use Wikimedia\Rdbms\Database;
 
