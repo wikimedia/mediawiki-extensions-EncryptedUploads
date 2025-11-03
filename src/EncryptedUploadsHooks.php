@@ -5,16 +5,17 @@ namespace EncryptedUploads;
 use ApiUpload;
 use ApiUsageException;
 use Article;
-use Html;
 use ImagePage;
 use LocalFile;
 use LogEntry;
+use MediaWiki\Html\Html;
+use MediaWiki\Html\TemplateParser;
+use MediaWiki\Title\Title;
 use MWException;
 use OutputPage;
 use Parser;
 use Skin;
 use SpecialUpload;
-use Title;
 use UploadFromFile;
 use User;
 use UserMailer;
@@ -193,7 +194,7 @@ class EncryptedUploadsHooks {
 							  self::customRightsCheck( $out->getUser(), $title );
 
 				$out->addModules( 'ext.encrypteduploads.main' );
-				$templater = new \TemplateParser( __DIR__ . '/../templates' );
+				$templater = new TemplateParser( __DIR__ . '/../templates' );
 
 				$args = [];
 				$args['title'] = wfMessage( 'encrypteduploads-warning-title' )->text();
