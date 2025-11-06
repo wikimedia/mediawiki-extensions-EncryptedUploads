@@ -54,13 +54,9 @@ class EncryptedActionDecrypt extends Action {
 		wfDebugLog( 'EncryptedUploads', 'File is encrypted, proceeding..' );
 
 		$services = MediaWikiServices::getInstance();
-			$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
+		$repoGroup = MediaWikiServices::getInstance()->getRepoGroup();
 
 		$file = LocalFile::newFromTitle( $title, $repoGroup->getLocalRepo() );
-		if ( !$file ) {
-			$this->getOutput()->addHTML( 'Can not fetch file' );
-			return false;
-		}
 
 		wfDebugLog( 'EncryptedUploads', 'Physical file location is ' . $file->getLocalRefPath() );
 		wfDebugLog( 'EncryptedUploads', 'Allocating temporary file for decryption..' );
