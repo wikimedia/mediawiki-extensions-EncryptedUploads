@@ -11,7 +11,8 @@ use MediaWiki\Title\Title;
 use Parser;
 use stdClass;
 use User;
-use Wikimedia\Rdbms\Database;
+use Wikimedia\Rdbms\IDatabase;
+use Wikimedia\Rdbms\IReadableDatabase;
 
 /**
  * Class for EncryptedUploads extension
@@ -24,10 +25,10 @@ class EncryptedUploads {
 	/** @var EncryptedUploads|null */
 	private static $instance;
 
-	/** @var Database */
+	/** @var IReadableDatabase */
 	private $dbr;
 
-	/** @var Database */
+	/** @var IDatabase */
 	private $dbw;
 
 	/**
@@ -132,7 +133,7 @@ class EncryptedUploads {
 	 */
 	public function getEncrypted( $titleId ) {
 		if ( $titleId ) {
-			$row = $this->dbr->selectRow( 'encrypted_file', '*', [ 'page_id' => $titleId ] );
+			$row = $this->dbr->selectRow( 'encrypted_file', '*', [ 'page_id' => $titleId ], __METHOD__ );
 			return $row;
 		}
 		return false;
@@ -150,7 +151,7 @@ class EncryptedUploads {
 				'user_id' => $user->getId(),
 				'password' => $password
 			];
-			$this->dbw->upsert( 'encrypted_file', $data, [ 'page_id' ], $data );
+			$this->dbw->upsert( 'encrypted_file', $data, [ 'page_id' ], $data, __METHOD__ );
 		}
 	}
 
@@ -159,7 +160,7 @@ class EncryptedUploads {
 	 */
 	public function deleteEncrypted( $titleId ) {
 		if ( $titleId ) {
-			$this->dbw->delete( 'encrypted_file', [ 'page_id' => $titleId ] );
+			$this->dbw->delete( 'encrypted_file', [ 'page_id' => $titleId ], __METHOD__ );
 		}
 	}
 
